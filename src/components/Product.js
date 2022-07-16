@@ -17,7 +17,7 @@ const Product = () => {
         setLoading(false);
       }
       getProduct();
-    }, [product.id]);
+    },);
     
     const Loading = () => {
         return(

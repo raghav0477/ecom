@@ -11,7 +11,7 @@ const Products = () => {
   useEffect(() => {
     const getProducts = async () => {
       setLoading(true);
-      const response = await fetch("https://fakestoreapi.com/products");
+      const response = await fetch("https://fakestoreapi.com/products/");
       if (componentMounted) {
         setData(await response.clone().json());
         setFilter(await response.json());
@@ -19,6 +19,7 @@ const Products = () => {
         console.log(filter);
       }
       return () => {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         componentMounted = false;
       };
     };
@@ -50,7 +51,7 @@ const Products = () => {
             <>
               <div className="col-md-3 mb-4">
                 <div className="card h-100 text-center p-4" key={product.id}>
-                  <img src={product.image} class="card-img-top h-64" alt={product.title}/>
+                  <img src={product.image} className="card-img-top h-64" alt={product.title}/>
                   <div className="card-body">
                     <h5 className="card-title mb-0">{product.title.substring(0,12)}</h5>
                     <p className="card-text fw-bold">
